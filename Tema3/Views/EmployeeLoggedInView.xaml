@@ -1,0 +1,52 @@
+﻿<Window x:Class="Tema3.Views.EmployeeLoggedInView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tema3.Views"
+        mc:Ignorable="d"
+        Title="UserLoggedIn" Height="600" Width="800">
+    <Grid>
+        <Label Content="Categorii" HorizontalAlignment="Left" Margin="49,3,0,0" VerticalAlignment="Top" Width="139"/>
+        <ListBox Name="categorii"
+                 ItemsSource="{Binding Categorii}"
+                 SelectedItem="{Binding Path=SelectedCategorie, Mode=OneWayToSource}"
+                 DisplayMemberPath="Nume"
+                 HorizontalAlignment="Left" Height="179" Margin="47,35,0,0" VerticalAlignment="Top" Width="134"/>
+        
+        <Button Content="Add Categorie" HorizontalAlignment="Left" Margin="51,261,0,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.431,3.781"
+                Command="{Binding AddCategorieCommand}"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="186,116,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.496,3.25"
+                Command="{Binding DeleteCategorieCommand}"/>
+        
+        <TextBox Text="{Binding Nume}"
+           HorizontalAlignment="Left" Height="23" Margin="50,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129"/>
+        
+        <Label Content="Preparate" HorizontalAlignment="Left" Margin="273,5,0,0" VerticalAlignment="Top" Width="104"/>
+        <ListBox ItemsSource="{Binding Preparate}"
+                 SelectedItem="{Binding SelectedPreparat, Mode=OneWayToSource}"
+                 DisplayMemberPath="Denumire"
+            HorizontalAlignment="Left" Height="179" Margin="268,37,0,0" VerticalAlignment="Top" Width="144"/>
+        <TextBox Text="{Binding DenumirePreparat}" HorizontalAlignment="Left" Height="23" Margin="270,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <TextBox Text="{Binding PretPreparat}" HorizontalAlignment="Left" Height="23" Margin="271,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <TextBox Text="{Binding CantitatePreparat}" HorizontalAlignment="Left" Height="23" Margin="272,298,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <TextBox Text="{Binding CantitateTotalaPreparat}" HorizontalAlignment="Left" Height="23" Margin="276,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <TextBox Text="{Binding CategorieIdPreparat}" HorizontalAlignment="Left" Height="23" Margin="275,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139" RenderTransformOrigin="1.556,2.374"/>
+        <Button Content="Add Preparat"
+                Command="{Binding AddPreparatCommand}"
+                HorizontalAlignment="Left" Margin="265,437,0,0" VerticalAlignment="Top" Width="141" RenderTransformOrigin="-0.248,-0.165"/>
+        
+        <Label Content="Meniuri" HorizontalAlignment="Left" Margin="478,7,0,0" VerticalAlignment="Top" Width="104"/>
+        <ListBox ItemsSource="{Binding Meniuri}"
+            SelectedItem="{Binding SelectedMeniu, Mode=OneWayToSource}"
+            DisplayMemberPath="Denumire"
+            HorizontalAlignment="Left" Height="179" Margin="478,42,0,0" VerticalAlignment="Top" Width="144"/>
+        <TextBox Text="{Binding DenumireMeniu}" HorizontalAlignment="Left" Height="23" Margin="477,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <TextBox Text="{Binding PretMeniu}" HorizontalAlignment="Left" Height="23" Margin="479,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <TextBox Text="{Binding CategorieIdMeniu}" HorizontalAlignment="Left" Height="23" Margin="481,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <Button Content="Add Preparat"
+            Command="{Binding AddMeniuCommand}"
+            HorizontalAlignment="Left" Margin="478,399,0,0" VerticalAlignment="Top" Width="141" RenderTransformOrigin="-0.248,-0.165"/>
+
+    </Grid>
+</Window>

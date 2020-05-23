@@ -1,0 +1,50 @@
+﻿<Window x:Class="Tema3.Views.LogInView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tema3.Views"
+        mc:Ignorable="d"
+        Background="Black"
+        Title="MainWindow" Height="450" Width="350">
+
+    <StackPanel Margin="20">
+        <Label Content="Login" Foreground="White" FontSize="20" HorizontalAlignment="Center"/>
+        <Separator/>
+        <Label Content="Email" Foreground="White"/>
+        <TextBox Text="{Binding Email}" Background="Gray" Foreground="White"
+                     FontSize="18"/>
+        <Label Content="Password" Foreground="White"/>
+        <TextBox Text="{Binding Parola}" Background="Gray" Foreground="White"
+                     FontSize="18"/>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <Button Content="SignIn as Client"
+                    Background="Gray" Foreground="White"
+                    FontSize="15" Margin="10" 
+                    Command="{Binding LogInClientCommand}"/>
+            <Button Content="SignIn as Employee" 
+                    Background="Gray" Foreground="White"
+                    FontSize="15" Margin="10" 
+                    Command="{Binding LogInEmployeeCommand}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <Button Content="SignUp as Client"
+                    Background="Gray" Foreground="White"
+                    FontSize="15"
+                    Margin="10"
+                    Command="{Binding GoToSignUpAsClientCommand}"/>
+            <Button Content="SignUp as Employee"
+                    Background="Gray" Foreground="White"
+                    Margin="10"
+                    FontSize="15"
+                    Command="{Binding GoToSignUpAsEmployeeCommand}"/>
+        </StackPanel>
+
+        <Button Content="Continue without logging"
+                    Margin="10"
+                    Background="Gray" Foreground="White"
+                    FontSize="18"
+                    Command="{Binding ContinueWithoutLoggingCommand}"/>
+    </StackPanel>
+
+</Window>

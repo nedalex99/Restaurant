@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{41228274-0799-4005-A386-D6FBC631356C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Tema3</RootNamespace>
+    <AssemblyName>Tema3</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.0.35\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="linq2db, Version=2.9.8.0, Culture=neutral, PublicKeyToken=e41013125f9e410a, processorArchitecture=MSIL">
+      <HintPath>..\packages\linq2db.2.9.8\lib\net46\linq2db.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Commands\AddCategorieCommand.cs" />
+    <Compile Include="Commands\AddMeniuCommand.cs" />
+    <Compile Include="Commands\AddPreparatCommand.cs" />
+    <Compile Include="Commands\ContinueWithoutLoggingCommand.cs" />
+    <Compile Include="Commands\DeleteCategorieCommand.cs" />
+    <Compile Include="Commands\GoToLogUpClientCommand.cs" />
+    <Compile Include="Commands\LogInClientCommand.cs" />
+    <Compile Include="Commands\LogInEmployeeCommand.cs" />
+    <Compile Include="Commands\LogUpClientCommand.cs" />
+    <Compile Include="Commands\GoToLogUpEmployeeCommand.cs" />
+    <Compile Include="Commands\LogUpEmployeeCommand.cs" />
+    <Compile Include="Models\BusinessLogicLayer\CategoriiDePreparateBLL.cs" />
+    <Compile Include="Models\BusinessLogicLayer\ClientBLL.cs" />
+    <Compile Include="Models\BusinessLogicLayer\EmployeeBLL.cs" />
+    <Compile Include="Models\BusinessLogicLayer\MeniuBLL.cs" />
+    <Compile Include="Models\BusinessLogicLayer\PreparateBLL.cs" />
+    <Compile Include="Models\DataAccesLayer\CategoriiDePreparateDAL.cs" />
+    <Compile Include="Models\DataAccesLayer\DALHelper.cs" />
+    <Compile Include="Models\DataAccesLayer\ClientDAL.cs" />
+    <Compile Include="Models\DataAccesLayer\EmployeeDAL.cs" />
+    <Compile Include="Models\DataAccesLayer\MeniuDAL.cs" />
+    <Compile Include="Models\DataAccesLayer\PreparateDAL.cs" />
+    <Compile Include="Models\EntityLayer\BasePropertyChanged.cs" />
+    <Compile Include="Models\EntityLayer\CategoriiDePreparate.cs" />
+    <Compile Include="Models\EntityLayer\Employee.cs" />
+    <Compile Include="Models\EntityLayer\Meniu.cs" />
+    <Compile Include="Models\EntityLayer\Preparate.cs" />
+    <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\SignUpAsClientViewModel.cs" />
+    <Compile Include="ViewModels\SignUpAsEmployeeViewModel.cs" />
+    <Compile Include="ViewModels\EmployeeLoggedInViewModel.cs" />
+    <Compile Include="Views\SignUpAsEmployeeView.xaml.cs">
+      <DependentUpon>SignUpAsEmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SignUpAsClientView.xaml.cs">
+      <DependentUpon>SignUpAsClientView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EmployeeLoggedInView.xaml.cs">
+      <DependentUpon>EmployeeLoggedInView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Views\LogInView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\LogInView.xaml.cs">
+      <DependentUpon>LogInView.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\SignUpAsEmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SignUpAsClientView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EmployeeLoggedInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\EntityLayer\Client.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
