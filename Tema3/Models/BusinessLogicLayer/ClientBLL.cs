@@ -30,17 +30,10 @@ namespace Tema3.Models.BusinessLogicLayer
             //UserList.Add(user);
         }
 
-        internal bool GetClientWithEmailAndPassword(string email, string password)
+        internal Client GetClientWithEmailAndPassword(string email, string password)
         {
-            var result = clientDAL.GetClientWithEmailAndPassword (email, password);
-            if(result.Count == 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return clientDAL.GetClientWithEmailAndPassword (email, password);
+            
         }
     }
 }

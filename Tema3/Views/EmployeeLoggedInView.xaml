@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tema3.Views"
         mc:Ignorable="d"
-        Title="UserLoggedIn" Height="600" Width="800">
+        Title="UserLoggedIn" Height="600" Width="1300">
     <Grid>
         <Label Content="Categorii" HorizontalAlignment="Left" Margin="49,3,0,0" VerticalAlignment="Top" Width="139"/>
         <ListBox Name="categorii"
@@ -13,15 +13,13 @@
                  SelectedItem="{Binding Path=SelectedCategorie, Mode=OneWayToSource}"
                  DisplayMemberPath="Nume"
                  HorizontalAlignment="Left" Height="179" Margin="47,35,0,0" VerticalAlignment="Top" Width="134"/>
-        
+        <TextBox Text="{Binding Nume}"
+           HorizontalAlignment="Left" Height="23" Margin="50,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129"/>
         <Button Content="Add Categorie" HorizontalAlignment="Left" Margin="51,261,0,0" VerticalAlignment="Top" Width="127" RenderTransformOrigin="0.431,3.781"
                 Command="{Binding AddCategorieCommand}"/>
         <Button Content="Delete" HorizontalAlignment="Left" Margin="186,116,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.496,3.25"
                 Command="{Binding DeleteCategorieCommand}"/>
-        
-        <TextBox Text="{Binding Nume}"
-           HorizontalAlignment="Left" Height="23" Margin="50,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="129"/>
-        
+
         <Label Content="Preparate" HorizontalAlignment="Left" Margin="273,5,0,0" VerticalAlignment="Top" Width="104"/>
         <ListBox ItemsSource="{Binding Preparate}"
                  SelectedItem="{Binding SelectedPreparat, Mode=OneWayToSource}"
@@ -35,7 +33,10 @@
         <Button Content="Add Preparat"
                 Command="{Binding AddPreparatCommand}"
                 HorizontalAlignment="Left" Margin="265,437,0,0" VerticalAlignment="Top" Width="141" RenderTransformOrigin="-0.248,-0.165"/>
-        
+        <Button Content="Delete"
+                Command="{Binding DeletePreparatCommand}"
+                HorizontalAlignment="Left" Margin="419,119,0,0" VerticalAlignment="Top" Width="45"/>
+
         <Label Content="Meniuri" HorizontalAlignment="Left" Margin="478,7,0,0" VerticalAlignment="Top" Width="104"/>
         <ListBox ItemsSource="{Binding Meniuri}"
             SelectedItem="{Binding SelectedMeniu, Mode=OneWayToSource}"
@@ -44,9 +45,44 @@
         <TextBox Text="{Binding DenumireMeniu}" HorizontalAlignment="Left" Height="23" Margin="477,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
         <TextBox Text="{Binding PretMeniu}" HorizontalAlignment="Left" Height="23" Margin="479,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
         <TextBox Text="{Binding CategorieIdMeniu}" HorizontalAlignment="Left" Height="23" Margin="481,335,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
-        <Button Content="Add Preparat"
+        <Button Content="Add Meniu"
             Command="{Binding AddMeniuCommand}"
             HorizontalAlignment="Left" Margin="478,399,0,0" VerticalAlignment="Top" Width="141" RenderTransformOrigin="-0.248,-0.165"/>
+        <Button Content="Delete" 
+                Command="{Binding DeleteMeniuCommand}"
+                HorizontalAlignment="Left" Margin="630,117,0,0" VerticalAlignment="Top" Width="44"/>
 
+        <Label Content="Alergeni" HorizontalAlignment="Left" Margin="690,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.125,-4.519" Width="136"/>
+        <ListBox ItemsSource="{Binding Alergeni}"
+            SelectedItem="{Binding SelectedAlergeni, Mode=OneWayToSource}"
+            DisplayMemberPath="Denumire"
+            HorizontalAlignment="Left" Height="179" Margin="682,42,0,0" VerticalAlignment="Top" Width="144"/>
+        <TextBox Text="{Binding DenumireAlergeni}" HorizontalAlignment="Left" Height="23" Margin="682,247,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="139"/>
+        <Button Content="Add Alergeni"
+                Command="{Binding AddAlergeniCommand}"
+                HorizontalAlignment="Left" Margin="683,290,0,0" VerticalAlignment="Top" Width="125" RenderTransformOrigin="0.302,0.45"/>
+        <Button Content="Delete"
+                Command="{Binding DeleteAlergeniCommand}"
+                HorizontalAlignment="Left" Margin="839,120,0,0" VerticalAlignment="Top" Width="41"/>
+
+        <ListBox HorizontalAlignment="Left" Height="312" Margin="945,40,0,0" VerticalAlignment="Top" Width="274"
+            ItemsSource="{Binding PreparateDinMeniuri}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding Path=Key}"/>
+                        <ItemsControl ItemsSource="{Binding Value}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="{Binding DenumirePreparat}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
     </Grid>
 </Window>

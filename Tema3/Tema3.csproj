@@ -62,38 +62,66 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AddAlergeniCommand.cs" />
     <Compile Include="Commands\AddCategorieCommand.cs" />
     <Compile Include="Commands\AddMeniuCommand.cs" />
+    <Compile Include="Commands\AddMeniuInComandaCommand.cs" />
     <Compile Include="Commands\AddPreparatCommand.cs" />
+    <Compile Include="Commands\AddPreparatInComandaCommand.cs" />
     <Compile Include="Commands\ContinueWithoutLoggingCommand.cs" />
+    <Compile Include="Commands\DeleteAlergeniCommand.cs" />
     <Compile Include="Commands\DeleteCategorieCommand.cs" />
+    <Compile Include="Commands\DeleteMeniuCommand.cs" />
+    <Compile Include="Commands\DeletePreparatCommand.cs" />
+    <Compile Include="Commands\GetPreparateDinMeniuriCommand.cs" />
     <Compile Include="Commands\GoToLogUpClientCommand.cs" />
     <Compile Include="Commands\LogInClientCommand.cs" />
     <Compile Include="Commands\LogInEmployeeCommand.cs" />
     <Compile Include="Commands\LogUpClientCommand.cs" />
     <Compile Include="Commands\GoToLogUpEmployeeCommand.cs" />
     <Compile Include="Commands\LogUpEmployeeCommand.cs" />
+    <Compile Include="Commands\PlaseazaComandaCommand.cs" />
+    <Compile Include="Models\BusinessLogicLayer\AlergeniBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\CategoriiDePreparateBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\ClientBLL.cs" />
+    <Compile Include="Models\BusinessLogicLayer\ComenziBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\EmployeeBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\MeniuBLL.cs" />
+    <Compile Include="Models\BusinessLogicLayer\MeniuriCuPreparateBLL.cs" />
     <Compile Include="Models\BusinessLogicLayer\PreparateBLL.cs" />
+    <Compile Include="Models\BusinessLogicLayer\PreparateComandateBLL.cs" />
+    <Compile Include="Models\DataAccesLayer\AlergeniDAL.cs" />
     <Compile Include="Models\DataAccesLayer\CategoriiDePreparateDAL.cs" />
+    <Compile Include="Models\DataAccesLayer\ComenziDAL.cs" />
     <Compile Include="Models\DataAccesLayer\DALHelper.cs" />
     <Compile Include="Models\DataAccesLayer\ClientDAL.cs" />
     <Compile Include="Models\DataAccesLayer\EmployeeDAL.cs" />
     <Compile Include="Models\DataAccesLayer\MeniuDAL.cs" />
+    <Compile Include="Models\DataAccesLayer\MeniuriCuPreparatDAL.cs" />
+    <Compile Include="Models\DataAccesLayer\PreparateComandateDAL.cs" />
     <Compile Include="Models\DataAccesLayer\PreparateDAL.cs" />
+    <Compile Include="Models\EntityLayer\Alergeni.cs" />
     <Compile Include="Models\EntityLayer\BasePropertyChanged.cs" />
     <Compile Include="Models\EntityLayer\CategoriiDePreparate.cs" />
+    <Compile Include="Models\EntityLayer\Comenzi.cs" />
     <Compile Include="Models\EntityLayer\Employee.cs" />
     <Compile Include="Models\EntityLayer\Meniu.cs" />
+    <Compile Include="Models\EntityLayer\MeniuriCuPreparate.cs" />
     <Compile Include="Models\EntityLayer\Preparate.cs" />
+    <Compile Include="Models\EntityLayer\PreparateComandate.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\ClientLoggedInViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\NoAccountViewModel.cs" />
     <Compile Include="ViewModels\SignUpAsClientViewModel.cs" />
     <Compile Include="ViewModels\SignUpAsEmployeeViewModel.cs" />
     <Compile Include="ViewModels\EmployeeLoggedInViewModel.cs" />
+    <Compile Include="Views\ClientLoggedInView.xaml.cs">
+      <DependentUpon>ClientLoggedInView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NoAccountView.xaml.cs">
+      <DependentUpon>NoAccountView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SignUpAsEmployeeView.xaml.cs">
       <DependentUpon>SignUpAsEmployeeView.xaml</DependentUpon>
     </Compile>
@@ -103,6 +131,10 @@
     <Compile Include="Views\EmployeeLoggedInView.xaml.cs">
       <DependentUpon>EmployeeLoggedInView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Views\ClientLoggedInView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\LogInView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,6 +147,10 @@
       <DependentUpon>LogInView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\NoAccountView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SignUpAsEmployeeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

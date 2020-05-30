@@ -23,6 +23,16 @@ namespace Tema3.Models.BusinessLogicLayer
             return preparateDAL.GetPreparate();
         }
 
+        internal ObservableCollection<Preparate> GetPreparatForAlergen(Alergeni alergen)
+        {
+            return preparateDAL.GetPreparateForAlergen(alergen);
+        }
+
+        internal ObservableCollection<Preparate> GetPreparatForMeniu(Meniu meniu)
+        {
+            return preparateDAL.GetPreparateForMeniu(meniu);
+        }
+
         internal void AddPreparat(Preparate preparat)
         {
             if (String.IsNullOrEmpty(preparat.Denumire))

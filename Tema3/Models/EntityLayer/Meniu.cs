@@ -8,6 +8,18 @@ namespace Tema3.Models.EntityLayer
 {
     public class Meniu : BasePropertyChanged
     {
+        private int? _meniuId;
+        public int? MeniuId
+        {
+            get { return _meniuId; }
+            set
+            {
+                _meniuId = value;
+                OnPropertyChanged("MeniuId");
+            }
+        }
+
+
         private string _denumire;
         public string Denumire
         {

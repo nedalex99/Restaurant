@@ -8,9 +8,8 @@ namespace Tema3.Models.EntityLayer
 {
     public class Preparate : BasePropertyChanged
     {
-        private int _id;
-
-        public int Id
+        private int? _id;
+        public int? Id
         {
             get { return _id; }
             set
@@ -21,7 +20,6 @@ namespace Tema3.Models.EntityLayer
         }
 
         private string _denumire;
-
         public string Denumire
         {
             get { return _denumire; }
@@ -33,7 +31,6 @@ namespace Tema3.Models.EntityLayer
         }
 
         private decimal? _pret;
-
         public decimal? Pret
         {
             get { return _pret; }
@@ -45,7 +42,6 @@ namespace Tema3.Models.EntityLayer
         }
 
         private int? _cantitate;
-
         public int? Cantitate
         {
             get { return _cantitate; }
@@ -57,7 +53,6 @@ namespace Tema3.Models.EntityLayer
         }
 
         private int? _cantitateTotala;
-
         public int? CantitateTotala
         {
             get { return _cantitateTotala; }
@@ -69,7 +64,6 @@ namespace Tema3.Models.EntityLayer
         }
 
         private int? _categorieId;
-
         public int? CategorieId
         {
             get { return _categorieId; }

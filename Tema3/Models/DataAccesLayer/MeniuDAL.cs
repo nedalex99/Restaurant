@@ -25,6 +25,7 @@ namespace Tema3.Models.DataAccesLayer
                     result.Add(
                         new Meniu()
                         {
+                            MeniuId = reader["meniuId"] as int?,
                             Denumire = reader["denumire"].ToString(),
                             Pret = reader["pret"] as decimal?,
                             CategorieId = reader["categorieId"] as int?
@@ -43,11 +44,30 @@ namespace Tema3.Models.DataAccesLayer
                 cmd.CommandType = System.Data.CommandType.StoredProcedure;
                 SqlParameter paramDenumire = new SqlParameter("@Denumire", meniu.Denumire);
                 SqlParameter paramPret = new SqlParameter("@Pret", meniu.Pret);
-                SqlParameter paramCategorieId = new SqlParameter("CategorieId", meniu.CategorieId);
+                SqlParameter paramCategorieId = new SqlParameter("@CategorieId", meniu.CategorieId);
 
                 cmd.Parameters.Add(paramDenumire);
                 cmd.Parameters.Add(paramPret);
                 cmd.Parameters.Add(paramCategorieId);
+
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        internal void AddMeniuInComanda(Comenzi comanda, Meniu meniu, int cantitate)
+        {
+            using (SqlConnection connection = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("spMeniuri_InsertMeniuInMeniuriComandate", connection);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter paramComandaId = new SqlParameter("@ComandaId", comanda.ComandaId);
+                SqlParameter paramMeniuId = new SqlParameter("@MeniuId", meniu.MeniuId);
+                SqlParameter paramCantitate = new SqlParameter("@Cantitate", cantitate);
+
+                cmd.Parameters.Add(paramComandaId);
+                cmd.Parameters.Add(paramMeniuId);
+                cmd.Parameters.Add(paramCantitate);
 
                 connection.Open();
                 cmd.ExecuteNonQuery();

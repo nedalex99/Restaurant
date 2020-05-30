@@ -33,6 +33,11 @@ namespace Tema3.Models.BusinessLogicLayer
             //UserList.Add(user);
         }
 
+        internal void AddMeniuInComanda(Comenzi comanda, Meniu meniu, int cantitate)
+        {
+            meniuDAL.AddMeniuInComanda(comanda, meniu, cantitate);
+        }
+
         internal void DeleteMeniu(Meniu meniu)
         {
             meniuDAL.DeleteMeniu(meniu);

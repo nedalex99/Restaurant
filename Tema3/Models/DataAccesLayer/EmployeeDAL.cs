@@ -25,6 +25,7 @@ namespace Tema3.Models.DataAccesLayer
                     result.Add(
                         new Employee()
                         {
+                            Id = reader["clientId"] as int?,
                             Nume = reader["nume"].ToString(),
                             Prenume = reader["prenume"].ToString(),
                             Email = reader["email"].ToString(),

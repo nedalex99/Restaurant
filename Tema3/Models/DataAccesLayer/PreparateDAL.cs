@@ -25,11 +25,60 @@ namespace Tema3.Models.DataAccesLayer
                     result.Add(
                         new Preparate()
                         {
+                            Id = reader["preparatId"] as int?,
                             Denumire = reader["denumire"].ToString(),
                             Pret = reader["pret"] as decimal?,
                             Cantitate = reader["cantitate"] as int?,
                             CantitateTotala = reader["cantitateTotala"] as int?,
                             CategorieId = reader["categorieId"] as int?
+                        });
+                }
+                reader.Close();
+                return result;
+            }
+        }
+
+        internal ObservableCollection<Preparate> GetPreparateForAlergen(Alergeni alergen)
+        {
+            using (SqlConnection connection = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("spPreparateCuAlergeni_GetDenumirePreparat", connection);
+                ObservableCollection<Preparate> result = new ObservableCollection<Preparate>();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter paramDenumire = new SqlParameter("@Denumire", alergen.Denumire);
+                cmd.Parameters.Add(paramDenumire);
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    result.Add(
+                        new Preparate()
+                        {
+                            Denumire = reader["denumire"].ToString()
+                        });
+                }
+                reader.Close();
+                return result;
+            }
+        }
+
+        internal ObservableCollection<Preparate> GetPreparateForMeniu(Meniu meniu)
+        {
+            using (SqlConnection connection = DALHelper.Connection)
+            {
+                SqlCommand cmd = new SqlCommand("spMeniuriCuPreparate_GetDenumirePreparatForMeniu", connection);
+                ObservableCollection<Preparate> result = new ObservableCollection<Preparate>();
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                SqlParameter paramDenumire = new SqlParameter("@Denumire", meniu.Denumire);
+                cmd.Parameters.Add(paramDenumire);
+                connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    result.Add(
+                        new Preparate()
+                        {
+                            Denumire = reader["denumire"].ToString()
                         });
                 }
                 reader.Close();
@@ -59,6 +108,7 @@ namespace Tema3.Models.DataAccesLayer
                 cmd.ExecuteNonQuery();
             }
         }
+
 
         internal void DeletePreparat(Preparate preparat)
         {

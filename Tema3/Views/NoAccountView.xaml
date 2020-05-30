@@ -1,0 +1,77 @@
+﻿<Window x:Class="Tema3.Views.NoAccountView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Tema3.Views"
+        mc:Ignorable="d"
+        Title="NoAccountView" Height="500" Width="1100">
+    <Grid>
+        <Label Content="Meniuri cu preparate" HorizontalAlignment="Left" Margin="36,5,0,0" VerticalAlignment="Top" Width="318"/>
+        <ListBox ItemsSource="{Binding MeniuriCuPreparate}"
+            HorizontalAlignment="Left" Height="375" Margin="35,39,0,0" VerticalAlignment="Top" Width="298">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="10" Padding="10">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="{Binding Key.Denumire}"/>
+                                <Label Content="{Binding Key.Pret}"/>
+                                <Label Content="Lei"/>
+                            </StackPanel>
+                            <ItemsControl ItemsSource="{Binding Value}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="Preparat: "/>
+                                            <Label Content="{Binding DenumirePreparat}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Label Content="Preparate" HorizontalAlignment="Left" Margin="385,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.321,-3.38" Width="253"/>
+        <ListBox HorizontalAlignment="Left" Height="365" Margin="380,41,0,0" VerticalAlignment="Top" Width="261"
+                 ItemsSource="{Binding Preparate}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <Label Content="{Binding Denumire}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <Label Content="Preparate cu alergeni" HorizontalAlignment="Left" Margin="742,8,0,0" VerticalAlignment="Top" Width="268"/>
+        <ListBox ItemsSource="{Binding PreparateCuAlergeni}"
+            HorizontalAlignment="Left" Height="367" Margin="736,41,0,0" VerticalAlignment="Top" Width="276">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderBrush="Black" BorderThickness="1" Margin="10" Padding="10">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <Label Content="Alergen:"/>
+                                <Label Content="{Binding Key.Denumire}"/>
+                            </StackPanel>
+                            <ItemsControl ItemsSource="{Binding Value}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Label Content="Preparat:"/>
+                                            <Label Content="{Binding Denumire}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </Border>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

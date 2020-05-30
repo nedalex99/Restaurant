@@ -22,14 +22,18 @@ namespace Tema3.ViewModels
         private Client _user;
         private SignUpAsClientViewModel _signUpClientViewModel;
         private SignUpAsEmployeeViewModel _signUpEmployeeViewModel;
-        private EmployeeLoggedInViewModel _userLoggedInViewModel;
+        private EmployeeLoggedInViewModel _employeeLoggedInViewModel;
+        private ClientLoggedInViewModel _clientLoggedInViewModel;
+        private NoAccountViewModel _noAccountViewModel;
         private ObservableCollection<Client> _users = new ObservableCollection<Client>();
 
         public LoginViewModel()
         {
             _signUpClientViewModel = new SignUpAsClientViewModel();
             _signUpEmployeeViewModel = new SignUpAsEmployeeViewModel();
-            _userLoggedInViewModel = new EmployeeLoggedInViewModel();
+            _employeeLoggedInViewModel = new EmployeeLoggedInViewModel();
+            _clientLoggedInViewModel = new ClientLoggedInViewModel();
+            _noAccountViewModel = new NoAccountViewModel();
             GoToSignUpAsClientCommand = new GoToLogUpClientCommand(this);
             GoToSignUpAsEmployeeCommand = new GoToLogUpEmployeeCommand(this);
             LogInClientCommand = new LogInClientCommand(this);
@@ -77,7 +81,6 @@ namespace Tema3.ViewModels
             get;
             private set;
         }
-
         public void GoToSignUpClient()
         {
             SignUpAsClientView view = new SignUpAsClientView();
@@ -90,7 +93,6 @@ namespace Tema3.ViewModels
             get;
             private set;
         }
-
         public void GoToSignUpEmployee()
         {
             SignUpAsEmployeeView view = new SignUpAsEmployeeView();
@@ -102,13 +104,15 @@ namespace Tema3.ViewModels
         {
             get; private set;
         }
-
         public void LogInAsClient()
         {
-            if (clientBLL.GetClientWithEmailAndPassword(Email, Parola))
+            var client = clientBLL.GetClientWithEmailAndPassword(Email, Parola);
+            if (client != null)
             {
-                EmployeeLoggedInView view = new EmployeeLoggedInView();
-                view.DataContext = _userLoggedInViewModel;
+                ClientLoggedInView view = new ClientLoggedInView();
+                view.DataContext = _clientLoggedInViewModel;
+                _clientLoggedInViewModel.Email = Email;
+                _clientLoggedInViewModel.Password = Parola;
                 view.ShowDialog();
             }
         }
@@ -118,13 +122,12 @@ namespace Tema3.ViewModels
             get;
             private set;
         }
-
         public void LogInAsEmployee()
         {
             if (employeBLL.GetEmployeeWithEmailAndPassword(Email, Parola))
             {
                 EmployeeLoggedInView view = new EmployeeLoggedInView();
-                view.DataContext = _userLoggedInViewModel;
+                view.DataContext = _employeeLoggedInViewModel;
                 view.ShowDialog();
             }
         }
@@ -134,11 +137,10 @@ namespace Tema3.ViewModels
             get;
             private set;
         }
-
         public void ContinueWithoutLogging()
         {
-            EmployeeLoggedInView view = new EmployeeLoggedInView();
-            view.DataContext = _userLoggedInViewModel;
+            NoAccountView view = new NoAccountView();
+            view.DataContext = _noAccountViewModel;
             view.ShowDialog();
         }
 

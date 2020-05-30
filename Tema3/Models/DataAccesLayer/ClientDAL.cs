@@ -25,6 +25,7 @@ namespace Tema3.Models.DataAccesLayer
                     result.Add(
                         new Client()
                         {
+                            Id = reader["clientId"] as int?,
                             Nume = reader["nume"].ToString(),
                             Prenume = reader["prenume"].ToString(),
                             Email = reader["email"].ToString(),
@@ -63,7 +64,7 @@ namespace Tema3.Models.DataAccesLayer
             }
         }
 
-        internal ObservableCollection<Client> GetClientWithEmailAndPassword(string email, string parola)
+        internal Client GetClientWithEmailAndPassword(string email, string parola)
         {
             using (SqlConnection connection = DALHelper.Connection)
             {
@@ -77,27 +78,39 @@ namespace Tema3.Models.DataAccesLayer
 
                 ObservableCollection<Client> result = new ObservableCollection<Client>();
 
+                Client client = null;
+
                 connection.Open();
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    result.Add(
-                        new Client()
-                        {
-                            Id = reader["clientId"] as int?,
-                            Nume = reader["nume"].ToString(),
-                            Prenume = reader["prenume"].ToString(),
-                            Email = reader["email"].ToString(),
-                            Telefon = reader["telefon"].ToString(),
-                            Adresa = reader["adresa"].ToString(),
-                            Password = reader["parola"].ToString()
-                        });
+                    //result.Add(
+                    //    new Client()
+                    //    {
+                    //        Id = reader["clientId"] as int?,
+                    //        Nume = reader["nume"].ToString(),
+                    //        Prenume = reader["prenume"].ToString(),
+                    //        Email = reader["email"].ToString(),
+                    //        Telefon = reader["telefon"].ToString(),
+                    //        Adresa = reader["adresa"].ToString(),
+                    //        Password = reader["parola"].ToString()
+                    //    });
+                    client = new Client()
+                    {
+                        Id = reader["clientId"] as int?,
+                        Nume = reader["nume"].ToString(),
+                        Prenume = reader["prenume"].ToString(),
+                        Email = reader["email"].ToString(),
+                        Telefon = reader["telefon"].ToString(),
+                        Adresa = reader["adresa"].ToString(),
+                        Password = reader["parola"].ToString()
+                    };
                 }
 
                 reader.Close();
 
-                return result;
+                return client;
             }
         }
     }
