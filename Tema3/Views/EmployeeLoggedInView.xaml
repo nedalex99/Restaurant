@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Tema3.Views"
         mc:Ignorable="d"
-        Title="UserLoggedIn" Height="600" Width="1300">
+        Title="UserLoggedIn" Height="600" Width="950">
     <Grid>
         <Label Content="Categorii" HorizontalAlignment="Left" Margin="49,3,0,0" VerticalAlignment="Top" Width="139"/>
         <ListBox Name="categorii"
@@ -64,25 +64,5 @@
         <Button Content="Delete"
                 Command="{Binding DeleteAlergeniCommand}"
                 HorizontalAlignment="Left" Margin="839,120,0,0" VerticalAlignment="Top" Width="41"/>
-
-        <ListBox HorizontalAlignment="Left" Height="312" Margin="945,40,0,0" VerticalAlignment="Top" Width="274"
-            ItemsSource="{Binding PreparateDinMeniuri}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Path=Key}"/>
-                        <ItemsControl ItemsSource="{Binding Value}">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Label Content="{Binding DenumirePreparat}"/>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
     </Grid>
 </Window>

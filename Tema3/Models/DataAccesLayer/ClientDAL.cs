@@ -85,17 +85,6 @@ namespace Tema3.Models.DataAccesLayer
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-                    //result.Add(
-                    //    new Client()
-                    //    {
-                    //        Id = reader["clientId"] as int?,
-                    //        Nume = reader["nume"].ToString(),
-                    //        Prenume = reader["prenume"].ToString(),
-                    //        Email = reader["email"].ToString(),
-                    //        Telefon = reader["telefon"].ToString(),
-                    //        Adresa = reader["adresa"].ToString(),
-                    //        Password = reader["parola"].ToString()
-                    //    });
                     client = new Client()
                     {
                         Id = reader["clientId"] as int?,
